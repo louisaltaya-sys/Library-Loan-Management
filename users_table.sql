@@ -42,3 +42,19 @@ CREATE TABLE IF NOT EXISTS `transactions` (
     KEY transactions_loan_index (loan_id),
     CONSTRAINT transactions_user_fk FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS book_loans (
+    loan_id INT NOT NULL AUTO_INCREMENT,
+    reference_no VARCHAR(100) NOT NULL,
+    book_title VARCHAR(255) NOT NULL,
+    book_isbn VARCHAR(30) NOT NULL,
+    borrower_name VARCHAR(150) NOT NULL,
+    borrower_id VARCHAR(100) NOT NULL,
+    loan_date DATE NOT NULL,
+    due_date DATE NOT NULL,
+    return_date DATE DEFAULT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'Borrowed',
+    PRIMARY KEY (loan_id),
+    KEY book_loans_reference_index (reference_no),
+    KEY book_loans_loan_date_index (loan_date)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
