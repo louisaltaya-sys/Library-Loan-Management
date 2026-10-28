@@ -58,3 +58,18 @@ CREATE TABLE IF NOT EXISTS book_loans (
     KEY book_loans_reference_index (reference_no),
     KEY book_loans_loan_date_index (loan_date)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO users (name, firstname, lastname, email, username, password, contact_number, gender, address)
+SELECT
+    'Demo User',
+    'Demo',
+    'User',
+    'demo@example.com',
+    'demo',
+    '$2y$10$VIY6NszRDgFQZvKS6YL5IOONApzz7hS/vrR4pbWGL8guMTQ/Rq7.2',
+    '09123456789',
+    'Prefer not to say',
+    'Cebu City'
+WHERE NOT EXISTS (
+    SELECT 1 FROM users WHERE username = 'demo' OR email = 'demo@example.com'
+);

@@ -93,7 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Password<input type="password" name="password" required autocomplete="current-password"></label>
             <button type="submit">Log In</button>
         </form>
-        <div class="footer">New to the library? <a href="register.php">Create an account</a></div>
+        <div class="footer">
+            Demo login: <strong>demo</strong> / <strong>Demo123!</strong><br>
+            New to the library? <a href="register.php">Create an account</a>
+        </div>
     </main>
 </div>
 </body>
